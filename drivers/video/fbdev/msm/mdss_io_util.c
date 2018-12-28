@@ -212,6 +212,7 @@ vreg_get_fail:
 } /* msm_dss_config_vreg */
 EXPORT_SYMBOL(msm_dss_config_vreg);
 
+extern bool ESD_TE_status;
 int msm_dss_enable_vreg(struct dss_vreg *in_vreg, int num_vreg, int enable)
 {
 	int i = 0, rc = 0;
@@ -250,6 +251,13 @@ int msm_dss_enable_vreg(struct dss_vreg *in_vreg, int num_vreg, int enable)
 		}
 	} else {
 		for (i = num_vreg-1; i >= 0; i--) {
+			if (ESD_TE_status){
+				printk(KERN_ERR "panel esd check recovery \n");
+				if ((strcmp(in_vreg[i].vreg_name, "wqhd-vddio") == 0)) {
+						printk(KERN_ERR "panel '%s' power continus supply\n", in_vreg[i].vreg_name);
+						continue;
+				}
+			}
 			if (in_vreg[i].pre_off_sleep)
 				usleep_range(in_vreg[i].pre_off_sleep * 1000,
 					in_vreg[i].pre_off_sleep * 1000);
