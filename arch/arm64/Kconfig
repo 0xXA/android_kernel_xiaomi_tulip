@@ -207,6 +207,18 @@ config ARM64_DMA_USE_IOMMU
 	select ARM_HAS_SG_CHAIN
 	select NEED_SG_DMA_LENGTH
 
+config THERMAL_SWITCH
+    default n
+        bool "Support thermal config switch"
+	    help
+	            Support thermal config switch.
+
+config KERNEL_CUSTOM_E7T
+    default n
+        bool "Custom for hardware E7T_pcb"
+	    help
+	            Custom for E7T_pcb.
+
 if ARM64_DMA_USE_IOMMU
 
 config ARM64_DMA_IOMMU_ALIGNMENT
@@ -248,6 +260,13 @@ config PGTABLE_LEVELS
 	default 3 if ARM64_4K_PAGES && ARM64_VA_BITS_39
 	default 3 if ARM64_16K_PAGES && ARM64_VA_BITS_47
 	default 4 if !ARM64_64K_PAGES && ARM64_VA_BITS_48
+
+config BOOT_INFO
+	bool "Boot information from bootloader"
+	default y
+	help
+	  On embedded linux device, we try to collect more information from
+	  bootloader to kernel. eg. powerup reason.
 
 source "init/Kconfig"
 
