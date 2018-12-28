@@ -1,0 +1,14 @@
+ menu "Fingerprint Drivers"
+
+config FINGERPRINT_GF3258
+	tristate "Goodix GF3258 fingerprint driver support"
+	help
+	  say y here to enable goodix fingerprint driver support!
+
+config FINGERPRINT_FPC1020
+	tristate "FPC1020 fingerprint drvier support"
+	help
+	  say y here to enable goodix fingerprint driver support!
+
+
+endmenu
