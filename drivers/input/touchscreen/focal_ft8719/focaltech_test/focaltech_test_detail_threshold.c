@@ -1002,10 +1002,6 @@ void OnInit_DThreshold_ForceTouch_SCapRawDataTest(char *strIniFile)
     GetPrivateProfileString("Basic_Threshold", "ForceTouch_SCapRawDataTest_ON_Max", "1000", str, strIniFile);
     MaxValue = fts_atoi(str);
 
-
-    读取阈值，若无特殊设置，则以Basic_Threshold替代
-
-
     for (i = 0; i < 1; i++) {
 		for (j = 0; j < test_data.screen_param.used_max_rx_num; j++) {
 			test_data.mcap_detail_thr.ForceTouch_SCapRawDataTest_ON_Max[i][j] = MaxValue;
@@ -1081,10 +1077,6 @@ void OnInit_DThreshold_ForceTouch_SCapCbTest(char *strIniFile)
     MinValue = fts_atoi(str);
     GetPrivateProfileString("Basic_Threshold", "ForceTouch_SCapCbTest_ON_Max", "240", str, strIniFile);
     MaxValue = fts_atoi(str);
-
-
-    读取阈值，若无特殊设置，则以Basic_Threshold替代
-
 
     for (i = 0; i < 1; i++) {
 		for (j = 0; j < test_data.screen_param.used_max_rx_num; j++) {
