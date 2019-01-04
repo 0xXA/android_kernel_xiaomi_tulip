@@ -1394,7 +1394,6 @@ static int proc_tp_selftest_show(struct seq_file *m, void *v)
 static int proc_tp_selftest_open(struct inode *inode, struct file *file)
 {
     return single_open(file, proc_tp_selftest_show, NULL);
-    而调用single_open函数只需直接指定show的函数指针即可，个人猜测可能是在single_open函数中实现了seq_operations结构体 。如果使用seq_open则需要实现seq_operations。
 }
 
 static ssize_t proc_tp_selftest_write(struct file *file, const char __user *buffer,  size_t count, loff_t *f_pos)
